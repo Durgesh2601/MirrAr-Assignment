@@ -1,6 +1,6 @@
-# Weather App
+# WeatherScope App
 
-Welcome to the Weather App! This application allows you to fetch weather information for a city and view a 5-day forecast.
+Welcome to the WeatherScope App! This application allows you to fetch weather information for a city and view a 5-day forecast.
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ Welcome to the Weather App! This application allows you to fetch weather informa
 
 1. Clone the repository:
 
-   ```git clone https://github.com/Durgesh2601/weather-app.git```
+   ```git clone https://github.com/Durgesh2601/WeatherScope.git```
 
 2. Navigate to the project directory if not in.
    ```cd weather-app```
