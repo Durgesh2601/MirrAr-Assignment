@@ -10,17 +10,13 @@ const WeatherComponent = () => {
 
   return (
     <>
-      <WeatherInput
-        {...{ weatherData, setWeatherData, forecastData, setForecastData }}
-      />
+      <WeatherInput {...{ setWeatherData, setForecastData }} />
       <WeatherCard
         {...{
           weatherData,
-          setWeatherData,
           isCelsius,
           setIsCelsius,
           forecastData,
-          setForecastData,
         }}
       />
     </>

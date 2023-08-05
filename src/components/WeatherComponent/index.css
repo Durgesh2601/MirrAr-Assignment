@@ -4,21 +4,20 @@
 }
 .weather-card-row {
   margin-top: 2em;
-  gap: 5em;
+  gap: 1em;
 }
 .weather-card {
   border: 0;
   background: #212121;
   box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
   padding: 0;
-  min-height: 20em;
 }
 .switch-row {
-  width: 55%;
-  margin: auto;
   margin-top: 2em;
+  padding: 0 1em;
 }
 .forecast-row {
+  width: 100%;
   max-height: 24em;
   overflow-y: scroll;
 }

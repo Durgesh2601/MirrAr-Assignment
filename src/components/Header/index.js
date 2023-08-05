@@ -5,10 +5,10 @@ const { Title, Text } = Typography;
 const Header = () => {
   return (
     <>
-      <Row align="center" className="header">
+      <Row align="center" className="header text-row">
         <Title level={2}>WeatherScope</Title>
       </Row>
-      <Row align="center">
+      <Row className="text-row" justify="center">
         <Text>Whispering Tomorrow's Weather Today</Text>
       </Row>
     </>

@@ -21,7 +21,6 @@ const WeatherCard = ({
   isCelsius,
   setIsCelsius,
   forecastData = {},
-  setForecastData,
 }) => {
   const { weather = [], main = {}, wind = {} } = weatherData || {};
   const showData =
@@ -36,17 +35,17 @@ const WeatherCard = ({
     {
       id: 1,
       label: "Current Temperature",
-      value: getFormattedTemperature(weatherData?.main?.temp, isCelsius),
+      value: getFormattedTemperature(main?.temp, isCelsius),
     },
     {
       id: 2,
       label: "Min. Temperature",
-      value: getFormattedTemperature(weatherData?.main?.temp_min, isCelsius),
+      value: getFormattedTemperature(main?.temp_min, isCelsius),
     },
     {
       id: 3,
       label: "Max. Temperature",
-      value: getFormattedTemperature(weatherData?.main?.temp_max, isCelsius),
+      value: getFormattedTemperature(main?.temp_max, isCelsius),
     },
     {
       id: 4,
@@ -56,10 +55,10 @@ const WeatherCard = ({
     {
       id: 5,
       label: "Wind Direction",
-      value: getWindDirection(weatherData?.wind?.deg),
+      value: getWindDirection(wind?.deg),
     },
-    { id: 6, label: "Wind Speed", value: weatherData?.wind?.speed },
-    { id: 7, label: "Humidity", value: weatherData?.main?.humidity },
+    { id: 6, label: "Wind Speed", value: wind?.speed },
+    { id: 7, label: "Humidity", value: main?.humidity },
   ];
 
   const renderForecast = () => {
@@ -105,19 +104,15 @@ const WeatherCard = ({
   return (
     showData && (
       <>
-        <Row align="end" className="switch-row">
-          <Col>
-            <Switch onChange={handleScaleChange} checked={isCelsius} />
-            <Text>
-              Change Temperature Scale ({isCelsius ? " °C " : " °F "})
-            </Text>
-          </Col>
+        <Row justify="center" align="middle" className="switch-row">
+          <Switch onChange={handleScaleChange} checked={isCelsius} />
+          <Text>Change Temperature Scale ({isCelsius ? " °C " : " °F "})</Text>
         </Row>
         <Row className="weather-card-row" justify="center">
-          <Col span={6}>
+          <Col xs={20} sm={16} md={10}>
             <Card className="weather-card">
               <Row align="middle" justify="center">
-                <Col span={8}>
+                <Col xs={12} span={8}>
                   <Title level={3}>{weatherData?.name}</Title>
                 </Col>
                 <Col>
@@ -129,9 +124,9 @@ const WeatherCard = ({
                   />
                 </Col>
               </Row>
-              <Divider style={{ color: "white" }} />
+              <Divider />
               {weatherDetails.map(({ id, label, value }) => (
-                <Row key={id}>
+                <Row key={id} justify="center">
                   <Text strong>
                     {label} : {value}
                   </Text>
@@ -139,10 +134,10 @@ const WeatherCard = ({
               ))}
             </Card>
           </Col>
-          <Col>
+          <Col xs={20} sm={16} md={9}>
             <Card className="weather-card">
               <Row align="middle" justify="center">
-                <Col>
+                <Col className="text-row">
                   <Title level={5}>5-Day Forecast in {weatherData?.name}</Title>
                 </Col>
               </Row>

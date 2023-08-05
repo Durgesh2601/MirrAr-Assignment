@@ -5,12 +5,7 @@ import { forecastMockData, weatherMockData } from "../../utils/helpers";
 
 const { Text } = Typography;
 
-const WeatherInput = ({
-  weatherData,
-  setWeatherData,
-  forecastData,
-  setForecastData,
-}) => {
+const WeatherInput = ({ setWeatherData, setForecastData }) => {
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -60,7 +55,7 @@ const WeatherInput = ({
 
   return (
     <Row align="center" className="weather-input">
-      <Col span={10}>
+      <Col xs={20} md={8}>
         <Input
           size="large"
           placeholder="Enter a city name"
@@ -68,8 +63,13 @@ const WeatherInput = ({
           onChange={handleOnChange}
         />
       </Col>
-      <Col>
-        <Button size="large" onClick={handleGetWeatherData} loading={loading}>
+      <Col xs={20} md={4}>
+        <Button
+          size="large"
+          onClick={handleGetWeatherData}
+          loading={loading}
+          style={{ width: "100%" }}
+        >
           <Text>Get Weather Info</Text>
         </Button>
       </Col>

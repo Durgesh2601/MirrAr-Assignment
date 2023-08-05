@@ -29,7 +29,10 @@
 .header {
   margin-top: 3em;
 }
-
+.text-row {
+  text-align: center;
+  word-wrap: break-word;
+}
 .ant-btn {
   background: #212428 !important;
 }
