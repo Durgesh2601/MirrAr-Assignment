@@ -56,3 +56,12 @@
   border: 0.8px solid gray !important;
   margin-right: 0.8em;
 }
+
+.ant-notification-notice {
+  background: #212428 !important;
+  box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60) !important;
+}
+
+.ant-notification-notice-close {
+  color: white !important;
+}

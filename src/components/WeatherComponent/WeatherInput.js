@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Col, Input, Row, Typography } from "antd";
+import { Button, Col, Input, Row, Typography, notification } from "antd";
 import { getWeatherData, getForecastData } from "../../api/weatherApi";
 
 const { Text } = Typography;
@@ -17,10 +17,16 @@ const WeatherInput = ({
     setCity(value);
   };
 
+  const openNotification = (msg = "") => {
+    notification.open({
+      message: <Text>{msg}</Text>,
+    });
+  };
+
   const handleGetWeatherData = async () => {
     setForecastData({});
     setWeatherData({});
-    if (!city) return alert("Please enter a city name");
+    if (!city) return openNotification("Please enter a city name");
     setIsLoading(true);
     try {
       const response = await getWeatherData(city);
@@ -36,7 +42,7 @@ const WeatherInput = ({
           data: { message = "" },
         },
       } = error;
-      alert(message);
+      openNotification(message);
       setCity("");
       console.error(error);
     }
@@ -64,6 +70,7 @@ const WeatherInput = ({
           placeholder="Enter a city name"
           value={city}
           onChange={handleOnChange}
+          onPressEnter={handleGetWeatherData}
         />
       </Col>
       <Col xs={20} md={4}>
