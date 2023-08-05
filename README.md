@@ -1,4 +1,4 @@
-# Weather Forecast App
+# Weather App
 
 Welcome to the Weather App! This application allows you to fetch weather information for a city and view a 5-day forecast.
 
@@ -12,33 +12,28 @@ Welcome to the Weather App! This application allows you to fetch weather informa
 
 1. Clone the repository:
 
-   \`\`\`bash
-   git clone https://github.com/Durgesh2601/weather-app.git
-   \`\`\`
+   ```git clone https://github.com/Durgesh2601/weather-app.git```
 
-2. Navigate to the project directory:
+2. Navigate to the project directory if not in.
+   ```cd weather-app```
 
-3. Create a \`.env\` file in the root directory of the project and add your API key for OpenWeatherMap (have given mine for example). Use the following format:
+4. Create a \`.env\` file in the root directory of the project and add your API key for OpenWeatherMap (have given mine for example). Use the following format:
 
-   \`\`\`plaintext
+   ```
    REACT_APP_WEATHER_API_KEY=28a85fd0a02ec5ee6855575e3e35a023
    REACT_APP_WEATHER_API_URL=https://api.openweathermap.org/data/2.5/weather/
    REACT_APP_FORECAST_API_URL=https://api.openweathermap.org/data/2.5/forecast/
-   REACT_APP_WEATHER_ICON_URL=http://openweathermap.org/img/wn/ \`\`\`
+   REACT_APP_WEATHER_ICON_URL=http://openweathermap.org/img/wn/
 
-4. Install project dependencies:
+5. Install project dependencies:
 
-   \`\`\`bash
-   npm install
-   \`\`\`
+   ```npm install```
 
 ### Running the Application
 
 1. Start the application:
-
-   \`\`\`bash
-   npm start
-   \`\`\`
+   
+   ```npm start```
 
 2. Open your web browser and visit [http://localhost:3000](http://localhost:3000) to access the application.
 
@@ -55,4 +50,3 @@ Welcome to the Weather App! This application allows you to fetch weather informa
 ## Acknowledgements
 
 This project was developed using the Ant Design library and the OpenWeatherMap API.
-`;
