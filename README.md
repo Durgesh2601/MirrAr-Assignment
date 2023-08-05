@@ -17,7 +17,7 @@ Welcome to the WeatherScope App! This application allows you to fetch weather in
 2. Navigate to the project directory if not in.
    ```cd weather-app```
 
-4. Create a \`.env\` file in the root directory of the project and add your API key for OpenWeatherMap (have given mine for example). Use the following format:
+4. Create a ```.env``` file in the root directory of the project and add your API key for OpenWeatherMap (have given mine for example). Use the following format:
 
    ```
    REACT_APP_WEATHER_API_KEY=28a85fd0a02ec5ee6855575e3e35a023
