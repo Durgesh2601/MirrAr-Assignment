@@ -5,6 +5,7 @@ import {
   Image,
   Row,
   Space,
+  Spin,
   Switch,
   Typography,
 } from "antd";
@@ -21,11 +22,13 @@ const WeatherCard = ({
   isCelsius,
   setIsCelsius,
   forecastData = {},
+  isLoading,
 }) => {
   const { weather = [], main = {}, wind = {} } = weatherData || {};
   const showData =
-    Object.keys(weatherData)?.length > 0 ||
-    Object.keys(forecastData)?.length > 0;
+    (Object.keys(weatherData)?.length > 0 ||
+      Object.keys(forecastData)?.length > 0) &&
+    !isLoading;
 
   const handleScaleChange = (value) => {
     setIsCelsius(value);
@@ -102,54 +105,62 @@ const WeatherCard = ({
   };
 
   return (
-    showData && (
-      <>
-        <Row justify="center" align="middle" className="switch-row">
-          <Switch onChange={handleScaleChange} checked={isCelsius} />
-          <Text>Change Temperature Scale ({isCelsius ? " °C " : " °F "})</Text>
-        </Row>
-        <Row className="weather-card-row" justify="center">
-          <Col xs={20} sm={16} md={10}>
-            <Card className="weather-card">
-              <Row align="middle" justify="center">
-                <Col xs={12} span={8}>
-                  <Title level={3}>{weatherData?.name}</Title>
-                </Col>
-                <Col>
-                  <Image
-                    preview={false}
-                    src={getIconUrl(weather?.[0]?.icon)}
-                    alt="icon"
-                    height={70}
-                  />
-                </Col>
-              </Row>
-              <Divider />
-              {weatherDetails.map(({ id, label, value }) => (
-                <Row key={id} justify="center">
-                  <Text strong>
-                    {label} : {value}
-                  </Text>
-                </Row>
-              ))}
-            </Card>
-          </Col>
-          <Col xs={20} sm={16} md={9}>
-            <Card className="weather-card">
-              <Row align="middle" justify="center">
-                <Col className="text-row">
-                  <Title level={5}>5-Day Forecast in {weatherData?.name}</Title>
-                </Col>
-              </Row>
-              <Divider />
-              <Space direction="vertical" className="forecast-row">
-                {renderForecast()}
-              </Space>
-            </Card>
-          </Col>
-        </Row>
-      </>
-    )
+    <Space className="container" direction="vertical">
+      <Spin spinning={isLoading} size="large">
+        {showData && (
+          <>
+            <Row justify="center" align="middle" className="switch-row">
+              <Switch onChange={handleScaleChange} checked={isCelsius} />
+              <Text>
+                Change Temperature Scale ({isCelsius ? " °C " : " °F "})
+              </Text>
+            </Row>
+            <Row className="weather-card-row" justify="center">
+              <Col xs={20} sm={16} md={10}>
+                <Card className="weather-card">
+                  <Row align="middle" justify="center">
+                    <Col xs={12} span={8}>
+                      <Title level={3}>{weatherData?.name}</Title>
+                    </Col>
+                    <Col>
+                      <Image
+                        preview={false}
+                        src={getIconUrl(weather?.[0]?.icon)}
+                        alt="icon"
+                        height={70}
+                      />
+                    </Col>
+                  </Row>
+                  <Divider />
+                  {weatherDetails.map(({ id, label, value }) => (
+                    <Row key={id} justify="center">
+                      <Text strong>
+                        {label} : {value}
+                      </Text>
+                    </Row>
+                  ))}
+                </Card>
+              </Col>
+              <Col xs={20} sm={16} md={9}>
+                <Card className="weather-card">
+                  <Row align="middle" justify="center">
+                    <Col className="text-row">
+                      <Title level={5}>
+                        5-Day Forecast in {weatherData?.name}
+                      </Title>
+                    </Col>
+                  </Row>
+                  <Divider />
+                  <Space direction="vertical" className="forecast-row">
+                    {renderForecast()}
+                  </Space>
+                </Card>
+              </Col>
+            </Row>
+          </>
+        )}
+      </Spin>
+    </Space>
   );
 };
 

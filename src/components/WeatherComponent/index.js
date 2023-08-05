@@ -7,16 +7,19 @@ const WeatherComponent = () => {
   const [weatherData, setWeatherData] = useState({});
   const [forecastData, setForecastData] = useState({});
   const [isCelsius, setIsCelsius] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <>
-      <WeatherInput {...{ setWeatherData, setForecastData }} />
+      <WeatherInput
+        {...{ setWeatherData, setForecastData, isLoading, setIsLoading }}
+      />
       <WeatherCard
         {...{
           weatherData,
           isCelsius,
           setIsCelsius,
           forecastData,
+          isLoading,
         }}
       />
     </>

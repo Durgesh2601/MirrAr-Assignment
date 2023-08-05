@@ -4,9 +4,13 @@ import { getWeatherData, getForecastData } from "../../api/weatherApi";
 
 const { Text } = Typography;
 
-const WeatherInput = ({ setWeatherData, setForecastData }) => {
+const WeatherInput = ({
+  setWeatherData,
+  setForecastData,
+  isLoading,
+  setIsLoading,
+}) => {
   const [city, setCity] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleOnChange = (e) => {
     const value = e?.target?.value;
@@ -14,8 +18,10 @@ const WeatherInput = ({ setWeatherData, setForecastData }) => {
   };
 
   const handleGetWeatherData = async () => {
+    setForecastData({});
+    setWeatherData({});
     if (!city) return alert("Please enter a city name");
-    setLoading(true);
+    setIsLoading(true);
     try {
       const response = await getWeatherData(city);
       if (response?.status !== 200)
@@ -24,7 +30,7 @@ const WeatherInput = ({ setWeatherData, setForecastData }) => {
       setWeatherData(data);
       fetchForecastData(city);
     } catch (error) {
-      setLoading(false);
+      setIsLoading(false);
       const {
         response: {
           data: { message = "" },
@@ -45,9 +51,9 @@ const WeatherInput = ({ setWeatherData, setForecastData }) => {
       setForecastData(data);
     } catch (error) {
       console.error("Error fetching forecast data:", error);
-      setLoading(false);
+      setIsLoading(false);
     }
-    setLoading(false);
+    setIsLoading(false);
   };
 
   return (
@@ -64,7 +70,7 @@ const WeatherInput = ({ setWeatherData, setForecastData }) => {
         <Button
           size="large"
           onClick={handleGetWeatherData}
-          loading={loading}
+          loading={isLoading}
           style={{ width: "100%" }}
         >
           <Text>Get Weather Info</Text>
