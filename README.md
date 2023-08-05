@@ -1,6 +1,6 @@
 # Weather Forecast App
 
-Welcome to the Weather Forecast App! This application allows you to fetch weather information for a city and view a 5-day forecast.
+Welcome to the Weather App! This application allows you to fetch weather information for a city and view a 5-day forecast.
 
 ## Getting Started
 
