@@ -66,7 +66,7 @@ const WeatherCard = ({
 
     const forecastEntries = forecastData?.list;
 
-    return forecastEntries.map((entry) => {
+    return forecastEntries?.map((entry) => {
       const {
         dt,
         weather = [],

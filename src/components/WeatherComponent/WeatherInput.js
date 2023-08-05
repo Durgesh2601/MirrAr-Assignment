@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Col, Input, Row, Typography } from "antd";
 import { getWeatherData, getForecastData } from "../../api/weatherApi";
-import { forecastMockData, weatherMockData } from "../../utils/helpers";
 
 const { Text } = Typography;
 
@@ -18,11 +17,10 @@ const WeatherInput = ({ setWeatherData, setForecastData }) => {
     if (!city) return alert("Please enter a city name");
     setLoading(true);
     try {
-      //   const response = await getWeatherData(city);
-      //   if (response?.status !== 200)
-      //     return alert("Failed to fetch weather data");
-      //   const data = response?.data;
-      const data = weatherMockData;
+      const response = await getWeatherData(city);
+      if (response?.status !== 200)
+        return alert("Failed to fetch weather data");
+      const data = response?.data;
       setWeatherData(data);
       fetchForecastData(city);
     } catch (error) {
@@ -40,11 +38,10 @@ const WeatherInput = ({ setWeatherData, setForecastData }) => {
 
   const fetchForecastData = async (city) => {
     try {
-      // const response = await getForecastData(city);
-      // if (response?.status !== 200)
-      //   return alert("Failed to fetch forecast data");
-      // const data = response?.data;
-      const data = forecastMockData;
+      const response = await getForecastData(city);
+      if (response?.status !== 200)
+        return alert("Failed to fetch forecast data");
+      const data = response?.data;
       setForecastData(data);
     } catch (error) {
       console.error("Error fetching forecast data:", error);
